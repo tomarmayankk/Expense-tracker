@@ -1,0 +1,22 @@
+{
+  "name": "expensetracker",
+  "version": "1.0.0",
+  "description": "1. Built user authentiaction\r 2. expense tracking\r 3. budget model and controller\r 4. dashboard for monthly presentation",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm install --prefix backend && npm install --prefix client && npm run build --prefix client",
+    "start": "npm run start --prefix backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomarmayankk/Expense-tracker.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/tomarmayankk/Expense-tracker/issues"
+  },
+  "homepage": "https://github.com/tomarmayankk/Expense-tracker#readme"
+}

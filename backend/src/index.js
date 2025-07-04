@@ -2,6 +2,8 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from "cookie-parser";
 import cors from 'cors';
+import path from "path";
+
 
 import authRoutes from './routes/auth.routes.js'
 import expenseRoutes from './routes/expense.routes.js';
@@ -19,12 +21,20 @@ app.use(cors({
 })); 
 
 const PORT = process.env.PORT;
+const __dirname = path.resolve();
 
 app.use("/api/auth", authRoutes);   
 app.use("/api/expense", expenseRoutes);
 app.use('/api/budget', budgetRoutes);
 app.use('/api/dashboard', dashboardRoutes);
 
+if (process.env.NODE_ENV === "production") {
+    app.use(express.static(path.join(__dirname, "../client/dist")));
+  
+    app.get("*", (req, res) => {
+      res.sendFile(path.join(__dirname, "../client", "dist", "index.html"));
+    });
+  }
 
 app.listen(PORT, () => {
     console.log("server running" + PORT);
