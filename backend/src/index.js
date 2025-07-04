@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import cookieParser from "cookie-parser";
 import cors from 'cors';
 import path from "path";
+const __dirname = path.resolve();
 
 
 import authRoutes from './routes/auth.routes.js'
@@ -21,7 +22,7 @@ app.use(cors({
 })); 
 
 const PORT = process.env.PORT;
-const __dirname = path.resolve();
+
 
 app.use("/api/auth", authRoutes);   
 app.use("/api/expense", expenseRoutes);
