@@ -5,6 +5,7 @@ import Navbar from '../components/Navbar';
 import { useNavigate } from 'react-router-dom';
 import { CategoryPieChart, CategoryBarChart, SpendingLineChart } from '../components/CategoryPieChart';
 import { useAuthStore } from '../store/useAuthStore';
+import Suggestions from '../components/Suggestions';
 
 export default function Dashboard() {
     const { authUser } = useAuthStore();
@@ -19,8 +20,6 @@ export default function Dashboard() {
         getDashboardSummary();
         checkBudgetAlerts();
     }, [getExpenses, getDashboardSummary, checkBudgetAlerts]);
-    
-
 
     const paymentData = (dashboardSummary?.topPaymentMethods || []).reduce((acc, { method, total }) => {
         acc[method] = total;
@@ -35,16 +34,22 @@ export default function Dashboard() {
                     👋 Hello, <span className="text-blue-600">{authUser?.fullName || authUser?.email || 'User'}</span>
                 </h2>
 
-                <h1 className="text-3xl font-bold text-center" style={{ marginBottom: '24px' }}>Dashboard</h1>
+                <h1 className="text-3xl font-bold text-center" style={{ marginBottom: '24px' }}>
+                    Dashboard
+                </h1>
 
-
+                {/* ✅ Monthly Summary */}
                 {dashboardSummary ? (
                     <div className="bg-white rounded-xl shadow" style={{ padding: '16px', marginBottom: '24px' }}>
-                        <h2 className="text-xl font-bold" style={{ marginBottom: '12px' }}>This Month Summary</h2>
+                        <h2 className="text-xl font-bold" style={{ marginBottom: '12px' }}>
+                            This Month Summary
+                        </h2>
                         <p>Total Spent: <span className="font-semibold">₹ {dashboardSummary.totalSpent}</span></p>
                         <p>Top Category: <span className="font-semibold">{dashboardSummary.topCategory}</span></p>
 
-                        <h3 className="font-semibold" style={{ marginTop: '16px', marginBottom: '8px' }}>Top Payment Methods:</h3>
+                        <h3 className="font-semibold" style={{ marginTop: '16px', marginBottom: '8px' }}>
+                            Top Payment Methods:
+                        </h3>
                         <ul className="list-disc list-inside" style={{ marginBottom: '16px' }}>
                             {dashboardSummary.topPaymentMethods.map(({ method, total }) => (
                                 <li key={method}>{method}: ₹ {total}</li>
@@ -54,16 +59,16 @@ export default function Dashboard() {
                         <div className="flex gap-4">
                             <button
                                 className="bg-blue-500 text-white rounded"
-                                onClick={() => navigate('/expenses')}
                                 style={{ padding: '8px', margin: 0 }}
+                                onClick={() => navigate('/expenses')}
                             >
                                 See All Expenses
                             </button>
 
                             <button
                                 className="bg-green-500 text-white rounded"
-                                onClick={() => setShowTotal(!showTotal)}
                                 style={{ padding: '8px', margin: 0 }}
+                                onClick={() => setShowTotal(!showTotal)}
                             >
                                 {showTotal ? 'Hide Total' : 'Show Total'}
                             </button>
@@ -71,15 +76,22 @@ export default function Dashboard() {
 
                         {showTotal && (
                             <div style={{ marginTop: '16px' }}>
-                                <p className="font-semibold text-green-600">Total Expenses this month: ₹ {dashboardSummary.totalSpent}</p>
+                                <p className="font-semibold text-green-600">
+                                    Total Expenses this month: ₹ {dashboardSummary.totalSpent}
+                                </p>
                             </div>
                         )}
                     </div>
                 ) : (
-                    <p className="text-center text-gray-600" style={{ marginBottom: '24px' }}>Loading summary...</p>
+                    <p className="text-center text-gray-600" style={{ marginBottom: '24px' }}>
+                        Loading summary...
+                    </p>
                 )}
 
+                {/* ✅ Suggestions */}
+                <Suggestions />
 
+                {/* ✅ Charts */}
                 {dashboardSummary ? (
                     <>
                         <CategoryPieChart data={dashboardSummary.categoryWise} />
@@ -87,13 +99,17 @@ export default function Dashboard() {
                         <SpendingLineChart data={dashboardSummary.spendingOverTime} />
                     </>
                 ) : (
-                    <p className="text-center text-gray-600" style={{ marginBottom: '24px' }}>Loading charts...</p>
+                    <p className="text-center text-gray-600" style={{ marginBottom: '24px' }}>
+                        Loading charts...
+                    </p>
                 )}
 
-
+                {/* ✅ Budget Alerts */}
                 {alerts.length > 0 && (
-                    <div className="bg-yellow-100 rounded-xl shadow" style={{ padding: '16px', marginBottom: '24px' }}>
-                        <h2 className="text-xl font-bold" style={{ marginBottom: '12px' }}>Budget Alerts</h2>
+                    <div className="bg-yellow-100 rounded-xl shadow" style={{ padding: '16px', marginTop: '24px' }}>
+                        <h2 className="text-xl font-bold" style={{ marginBottom: '12px' }}>
+                            Budget Alerts
+                        </h2>
                         {alerts.map(alert => (
                             alert.alert && (
                                 <p

@@ -12,6 +12,10 @@ import budgetRoutes from './routes/budget.routes.js';
 import dashboardRoutes from './routes/dashboard.routes.js';
 import {connectDB} from './lib/db.js'
 
+import suggestionsRoutes from './routes/suggestions.routes.js'; //added for python suggestions
+
+
+
 const app = express();
 app.use(express.json());
 dotenv.config();
@@ -21,9 +25,10 @@ app.use(cors({
     credentials:true
 })); 
 
+
 const PORT = process.env.PORT;
 
-
+app.use('/api/suggestions', suggestionsRoutes);
 app.use("/api/auth", authRoutes);   
 app.use("/api/expense", expenseRoutes);
 app.use('/api/budget', budgetRoutes);

@@ -21,7 +21,7 @@ def get_suggestions():
     # Get top spending category
     top_category = max(category_totals, key=category_totals.get)
     
-    suggestions = [f"You spent the most on {top_category}. Try reducing it by 15%."]
+    suggestions = [f"You spent the most on {top_category}. Try reducing it"]
 
     # Add food spending warning
     if category_totals.get('Food', 0) > 0.25 * total_spent:
