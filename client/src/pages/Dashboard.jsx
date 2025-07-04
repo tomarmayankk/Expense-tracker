@@ -21,7 +21,7 @@ export default function Dashboard() {
     }, [getExpenses, getDashboardSummary, checkBudgetAlerts]);
     
 
-    // Format data for Bar Chart
+
     const paymentData = (dashboardSummary?.topPaymentMethods || []).reduce((acc, { method, total }) => {
         acc[method] = total;
         return acc;
@@ -37,7 +37,7 @@ export default function Dashboard() {
 
                 <h1 className="text-3xl font-bold text-center" style={{ marginBottom: '24px' }}>Dashboard</h1>
 
-                {/* Summary */}
+
                 {dashboardSummary ? (
                     <div className="bg-white rounded-xl shadow" style={{ padding: '16px', marginBottom: '24px' }}>
                         <h2 className="text-xl font-bold" style={{ marginBottom: '12px' }}>This Month Summary</h2>
@@ -79,7 +79,7 @@ export default function Dashboard() {
                     <p className="text-center text-gray-600" style={{ marginBottom: '24px' }}>Loading summary...</p>
                 )}
 
-                {/* Charts */}
+
                 {dashboardSummary ? (
                     <>
                         <CategoryPieChart data={dashboardSummary.categoryWise} />
@@ -90,7 +90,7 @@ export default function Dashboard() {
                     <p className="text-center text-gray-600" style={{ marginBottom: '24px' }}>Loading charts...</p>
                 )}
 
-                {/* Budget Alerts */}
+
                 {alerts.length > 0 && (
                     <div className="bg-yellow-100 rounded-xl shadow" style={{ padding: '16px', marginBottom: '24px' }}>
                         <h2 className="text-xl font-bold" style={{ marginBottom: '12px' }}>Budget Alerts</h2>

@@ -2,7 +2,7 @@ import { generateToken } from "../lib/utils.js";
 import User from "../models/user.model.js";
 import bcrypt from 'bcryptjs';
 
-// ✅ Signup Controller
+
 export const signup = async (req, res) => {
     const { fullName, email, password } = req.body;
     try {
@@ -40,7 +40,7 @@ export const signup = async (req, res) => {
     }
 };
 
-// ✅ Signin Controller
+
 export const signin = async (req, res) => {
     const { email, password } = req.body;
 

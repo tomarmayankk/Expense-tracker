@@ -1,9 +1,8 @@
-// src/store/useAuthStore.js
+
 import { create } from 'zustand';
 import toast from 'react-hot-toast';
 import { axiosInstance } from '../lib/axios';
 
-// ✅ Zustand with Persistence (optional but recommended)
 const getStoredUser = () => {
     try {
         const user = localStorage.getItem('authUser');
@@ -19,7 +18,7 @@ export const useAuthStore = create((set) => ({
     isSigningUp: false,
     isCheckingAuth: true,
 
-    // ✅ Check Auth
+
     checkAuth: async () => {
         try {
             const res = await axiosInstance.get('/auth/check');
@@ -35,7 +34,7 @@ export const useAuthStore = create((set) => ({
         }
     },
 
-    // ✅ Signup
+
     signup: async ({ fullName, email, password }) => {
         set({ isSigningUp: true });
         try {
@@ -55,7 +54,7 @@ export const useAuthStore = create((set) => ({
         }
     },
 
-    // ✅ Signin
+
     signin: async ({ email, password }) => {
         set({ isSigningIn: true });
         try {
@@ -74,7 +73,7 @@ export const useAuthStore = create((set) => ({
         }
     },
 
-    // ✅ Signout
+
     signout: async () => {
         try {
             await axiosInstance.post('/auth/signout');

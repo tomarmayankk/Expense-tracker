@@ -16,7 +16,7 @@ export default function App() {
     const { authUser, isCheckingAuth, checkAuth } = useAuthStore();
 
   useEffect(() => {
-        checkAuth(); // <-- will restore user session if JWT cookie exists
+        checkAuth(); 
     }, []);
 
     if (isCheckingAuth) {

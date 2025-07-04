@@ -2,7 +2,6 @@
 import React from 'react';
 
 export default function ProfileCircle({ name }) {
-    // Get the first two initials
     const initials = name
         ? name
               .split(' ')

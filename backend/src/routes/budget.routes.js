@@ -4,8 +4,8 @@ import { protectRoute } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
-router.post('/set', protectRoute, setBudget);         // ➤ setBudget()
-router.get('/all', protectRoute, getBudgets);         // ➤ getBudgets()
-router.get('/alerts', protectRoute, checkBudgetAlerts); // ➤ checkBudgetAlerts()
+router.post('/set', protectRoute, setBudget);         
+router.get('/all', protectRoute, getBudgets);         
+router.get('/alerts', protectRoute, checkBudgetAlerts);
 
 export default router;

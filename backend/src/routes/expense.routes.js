@@ -4,9 +4,9 @@ import { protectRoute } from '../middleware/auth.middleware.js';
 
 const router = express.Router();
 
-router.post('/add', protectRoute, addExpense);           // ➤ addExpense()
-router.get('/all', protectRoute, getExpenses);           // ➤ getAllExpenses()
-router.put('/update/:id', protectRoute, updateExpense);  // ➤ updateExpense()
-router.delete('/delete/:id', protectRoute, deleteExpense); // ➤ deleteExpense()
+router.post('/add', protectRoute, addExpense);           
+router.get('/all', protectRoute, getExpenses);           
+router.put('/update/:id', protectRoute, updateExpense);  
+router.delete('/delete/:id', protectRoute, deleteExpense);
 
 export default router;

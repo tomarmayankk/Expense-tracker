@@ -7,7 +7,7 @@ export const useExpenseStore = create((set) => ({
     dashboardSummary: null,
     isLoading: false,
 
-    // ✅ Add Expense
+ 
     addExpense: async (expenseData) => {
         set({ isLoading: true });
         try {
@@ -23,7 +23,6 @@ export const useExpenseStore = create((set) => ({
         }
     },
 
-    // ✅ Get All Expenses
     getExpenses: async () => {
         set({ isLoading: true });
         try {
@@ -36,7 +35,6 @@ export const useExpenseStore = create((set) => ({
         }
     },
 
-    // ✅ Update Expense
     updateExpense: async (id, updatedData) => {
         try {
             const res = await axiosInstance.put(`/expense/update/${id}`, updatedData);
@@ -51,7 +49,6 @@ export const useExpenseStore = create((set) => ({
         }
     },
 
-    // ✅ Delete Expense
     deleteExpense: async (id) => {
         try {
             await axiosInstance.delete(`/expense/delete/${id}`);
@@ -64,7 +61,6 @@ export const useExpenseStore = create((set) => ({
         }
     },
 
-    // ✅ Get Dashboard Summary
     getDashboardSummary: async () => {
         try {
             const res = await axiosInstance.get('/dashboard/summary');

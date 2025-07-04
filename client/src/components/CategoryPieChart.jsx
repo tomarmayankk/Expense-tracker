@@ -5,7 +5,6 @@ import {
     LineChart, Line
 } from 'recharts';
 
-// Color palette
 const COLORS = ['#8884d8', '#82ca9d', '#ffc658', '#ff7f50', '#00c49f', '#ffbb28', '#d0ed57', '#a4de6c'];
 
 export function CategoryPieChart({ data }) {

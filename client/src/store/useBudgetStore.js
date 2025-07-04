@@ -8,7 +8,7 @@ export const useBudgetStore = create((set) => ({
     alerts: [],
     isLoading: false,
 
-    // Get all budgets
+
     getBudgets: async () => {
         set({ isLoading: true });
         try {
@@ -21,7 +21,7 @@ export const useBudgetStore = create((set) => ({
         }
     },
 
-    // Set or update a budget
+
     setBudget: async (data) => {
         try {
             const res = await axiosInstance.post('/budget/set', data);
@@ -34,7 +34,7 @@ export const useBudgetStore = create((set) => ({
         }
     },
 
-    // Check budget alerts
+
     checkBudgetAlerts: async () => {
         try {
             const res = await axiosInstance.get('/budget/alerts');

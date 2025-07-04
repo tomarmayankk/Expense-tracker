@@ -51,7 +51,6 @@ export default function Navbar() {
                         All Expenses
                     </button>
 
-                    {/* 👤 Profile Circle */}
                     <ProfileCircle name={authUser?.fullName || authUser?.email || 'User'} />
 
                     <button

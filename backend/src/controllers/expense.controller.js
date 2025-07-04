@@ -1,6 +1,6 @@
 import Expense from "../models/expense.model.js";
 
-//adding the expenses
+
 export const addExpense = async (req, res) => {
     const { amount, category, date, paymentMethod, notes } = req.body;
 
@@ -23,7 +23,7 @@ export const addExpense = async (req, res) => {
     }
 };
 
-// get expenses
+
 export const getExpenses = async (req, res) => {
     const { category, paymentMethod, startDate, endDate, search } = req.query;
 
@@ -38,7 +38,7 @@ export const getExpenses = async (req, res) => {
     try {
         const expenses = await Expense.find(filter).sort({ date: -1 });
 
-        // Optional: Search in notes
+        
         const filteredExpenses = search
             ? expenses.filter(exp => exp.notes && exp.notes.toLowerCase().includes(search.toLowerCase()))
             : expenses;
@@ -50,7 +50,7 @@ export const getExpenses = async (req, res) => {
     }
 };
 
-// update expenses
+
 export const updateExpense = async (req, res) => {
     const { id } = req.params;
     const { amount, category, date, paymentMethod, notes } = req.body;
@@ -76,7 +76,7 @@ export const updateExpense = async (req, res) => {
     }
 };
 
-//delete Expenses
+
 export const deleteExpense = async (req, res) => {
     const { id } = req.params;
 

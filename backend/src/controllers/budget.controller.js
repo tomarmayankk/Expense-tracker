@@ -1,7 +1,7 @@
 import Budget from "../models/budget.model.js";
 import Expense from "../models/expense.model.js";
 
-// Set or Update Budget for a category
+
 export const setBudget = async (req, res) => {
   const { category, monthlyLimit } = req.body;
 
@@ -27,7 +27,7 @@ export const setBudget = async (req, res) => {
   }
 };
 
-// Get all budgets for the user
+
 export const getBudgets = async (req, res) => {
   try {
     const budgets = await Budget.find({ userId: req.user._id });
